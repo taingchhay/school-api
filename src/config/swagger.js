@@ -1,6 +1,7 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
+
 const options = {
     definition: {
         openapi: '3.0.0',
@@ -9,6 +10,16 @@ const options = {
             version: '1.0.0',
             description: 'API for managing students, courses, and teachers',
         },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [{ bearerAuth: [] }],
     },
     apis: ['**/controllers/*.js'],
 };
